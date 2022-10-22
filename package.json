@@ -1,0 +1,19 @@
+{
+  "name": "com.izzyhalili",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/izzyyhh/izzyhalili.git"
+  },
+  "author": "izzy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/izzyyhh/izzyhalili/issues"
+  },
+  "homepage": "https://github.com/izzyyhh/izzyhalili#readme"
+}

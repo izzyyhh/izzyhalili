@@ -10,6 +10,8 @@ export const metadata: Metadata = {
         "Hello my name's Izzy, a software engineer living in Austria. I love to code and create software that either solves problems or that are cool to use.",
 }
 
+// TODO: think about if u really want a snap scroll fullpage stuff
+
 export default function RootLayout({
     children,
 }: {

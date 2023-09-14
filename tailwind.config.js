@@ -12,10 +12,19 @@ module.exports = {
                 nightblack: '#0D0A0B',
                 ghostwhite: '#FBF9FF',
             },
-            backgroundImage: {
-                'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-                'gradient-conic':
-                    'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+            keyframes: {
+                fadeinfromright: {
+                    '0%': { opacity: 0, transform: 'translateX(100%)' },
+                    '100%': { opacity: 1 },
+                },
+                fadeinfromleft: {
+                    '0%': { opacity: 0, transform: 'translateX(-100%)' },
+                    '100%': { opacity: 1 },
+                },
+            },
+            animation: {
+                fadeinfromright: 'fadeinfromright 1s ease-in-out',
+                fadeinfromleft: 'fadeinfromleft 1s ease-in-out',
             },
         },
     },

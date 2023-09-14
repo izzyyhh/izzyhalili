@@ -7,7 +7,7 @@ const signikaNegative = Signika_Negative({
 
 export default function Header() {
     return (
-        <header className=" h-screen w-full bg-nightblack flex flex-col">
+        <header className=" h-screen w-full bg-nightblack flex flex-col overflow-hidden">
             <div className="p-8 flex justify-between items-center">
                 <p
                     className={`${signikaNegative.className} text-ghostwhite uppercase font-bold tracking-[0.3rem] text-lg`}
@@ -23,30 +23,30 @@ export default function Header() {
             </div>
 
             <div className="flex flex-auto gap-2">
-                <div className=" w-5/12 relative">
+                <div className="animate-fadeinfromleft w-5/12 relative">
                     <div className="imgbox w-[550px] absolute left-[-270px]">
                         <img
                             src="/me.png"
                             alt="person, Ismail Halili"
-                            className=" contrast-[1.5] opacity-[0.6]"
+                            className=" contrast-[1.5] opacity-[0.2]"
                         />
                     </div>
                 </div>
 
                 <div className="z-10">
                     <h1
-                        className={`${signikaNegative.className} mt-24 text-ghostwhite uppercase font-bold tracking-[0.5rem] text-4xl z-10`}
+                        className={`${signikaNegative.className} mt-24 text-ghostwhite uppercase font-bold tracking-[0.5rem] text-4xl z-10 animate-fadeinfromright`}
                     >
                         Ismail \<br></br>Halili \
                     </h1>
                     <h2
-                        className={`${signikaNegative.className} mt-4 text-ghostwhite uppercase font-thin tracking-[0.5rem] text-2xl z-10`}
+                        className={`${signikaNegative.className} mt-4 text-ghostwhite uppercase font-thin tracking-[0.5rem] text-2xl z-10 animate-fadeinfromright`}
                     >
                         Software <br /> Engineer
                     </h2>
 
                     <div className="socials mt-12">
-                        <ul className="flex gap-4 flex-col">
+                        <ul className="flex gap-4 flex-col animate-fadeinfromright">
                             <li>
                                 <Image
                                     src="/github-mark.svg"
@@ -94,8 +94,11 @@ export default function Header() {
             <div
                 className={`${signikaNegative.className} font-thin tracking-widest text-center py-8`}
             >
-                <p>IZZY &copy;{new Date().getFullYear()}</p>
+                <button className="animate-bounce">
+                    <span>About Me</span>&#11167;
+                </button>
             </div>
         </header>
     )
 }
+// TODO: GLITCHY TEXT ALL 20 seconds or so !

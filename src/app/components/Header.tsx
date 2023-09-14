@@ -23,8 +23,17 @@ export default function Header() {
             </div>
 
             <div className="flex flex-auto gap-2">
-                <div className=" w-5/12 bg-gray-500"></div>
-                <div>
+                <div className=" w-5/12 relative">
+                    <div className="imgbox w-[550px] absolute left-[-270px]">
+                        <img
+                            src="/me.png"
+                            alt="person, Ismail Halili"
+                            className=" contrast-[1.5] opacity-[0.6]"
+                        />
+                    </div>
+                </div>
+
+                <div className="z-10">
                     <h1
                         className={`${signikaNegative.className} mt-24 text-ghostwhite uppercase font-bold tracking-[0.5rem] text-4xl z-10`}
                     >
@@ -49,24 +58,43 @@ export default function Header() {
                                 />
                             </li>
                             <li>
-                                {' '}
                                 <Image
-                                    src="/LI-In-Bug.png"
+                                    src="/linkedin.svg"
                                     height={32}
                                     width={32}
                                     alt="LinkedIn Logo"
-                                    className="grayscale brightness-100"
+                                    className="dark:invert"
                                     color="#000"
                                 />
                             </li>
-                            <li>Instagram</li>
-                            <li>X</li>
+                            <li>
+                                <Image
+                                    src="/instagram.svg"
+                                    height={32}
+                                    width={32}
+                                    alt="Instagram Logo"
+                                    className="dark:invert"
+                                    color="#000"
+                                />
+                            </li>
+                            <li>
+                                <Image
+                                    src="/x.svg"
+                                    height={32}
+                                    width={32}
+                                    alt="X Twitter Logo"
+                                    className="dark:invert"
+                                    color="#000"
+                                />
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div className={`${signikaNegative.className} text-center py-8`}>
-                <p>I create software.</p>
+            <div
+                className={`${signikaNegative.className} font-thin tracking-widest text-center py-8`}
+            >
+                <p>IZZY &copy;{new Date().getFullYear()}</p>
             </div>
         </header>
     )

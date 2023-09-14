@@ -53,7 +53,7 @@ export default function Header() {
                                     height={32}
                                     width={32}
                                     alt="Github Logo"
-                                    className="dark:invert"
+                                    className="dark:invert contrast-[1000]"
                                     color="#000"
                                 />
                             </li>

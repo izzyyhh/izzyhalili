@@ -1,11 +1,47 @@
+'use client'
 import { Signika_Negative } from 'next/font/google'
 import Image from 'next/image'
+import { useEffect } from 'react'
 
 const signikaNegative = Signika_Negative({
     subsets: ['latin'],
 })
 
 export default function Header() {
+    useEffect(() => {
+        const GLITCH_CHARS = '`¡™£¢∞§¶•ªº–≠åß∂ƒ©˙∆˚¬…æ≈ç√∫˜µ≤≥÷/?░▒▓<>/'.split(
+            ''
+        )
+        const textContainer = document.querySelector('h1')
+
+        if (textContainer) {
+            const text = textContainer.textContent
+            // TODO it breaks the break between words..
+            // dunno how this should work yet ffs
+            const characters = text!!.split('')
+            textContainer.textContent = ''
+
+            characters.forEach((char) => {
+                const span = document.createElement('span')
+                span.textContent = char
+
+                for (let index = 0; index < 10; index++) {
+                    span.style.setProperty(
+                        `--char-${index}`,
+                        `${
+                            GLITCH_CHARS[
+                                Math.floor(Math.random() * GLITCH_CHARS.length)
+                            ]
+                        }`
+                    )
+                }
+                textContainer.appendChild(span)
+            })
+
+            console.log(textContainer)
+        }
+    }, [])
+
     return (
         <header className=" h-screen w-full bg-nightblack flex flex-col overflow-hidden">
             <div className="p-8 flex justify-between items-center">

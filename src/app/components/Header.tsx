@@ -1,7 +1,7 @@
 'use client'
 import { Signika_Negative } from 'next/font/google'
 import Image from 'next/image'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 const signikaNegative = Signika_Negative({
     subsets: ['latin'],
@@ -9,15 +9,17 @@ const signikaNegative = Signika_Negative({
 
 export default function Header() {
     useEffect(() => {
+        const ANIMATION_NAME = 'glitch-switch'
         const GLITCH_CHARS = '`¡™£¢∞§¶•ªº–≠åß∂ƒ©˙∆˚¬…æ≈ç√∫˜µ≤≥÷/?░▒▓<>/'.split(
             ''
         )
         const textContainer = document.querySelector('h1')
+        textContainer?.addEventListener('click', () => {
+            const element = document.querySelector('h1 > [data-char]:after')
+        })
 
         if (textContainer) {
             const text = textContainer.textContent
-            // TODO it breaks the break between words..
-            // dunno how this should work yet ffs
             const characters = text!!.split('')
             textContainer.textContent = ''
 
@@ -28,16 +30,20 @@ export default function Header() {
                 for (let index = 0; index < 10; index++) {
                     span.style.setProperty(
                         `--char-${index}`,
-                        `${
+                        `"${
                             GLITCH_CHARS[
                                 Math.floor(Math.random() * GLITCH_CHARS.length)
                             ]
-                        }`
+                        }"`
                     )
+
+                    span.setAttribute('data-char', char)
+                    span.style.setProperty('--animation-name', ANIMATION_NAME)
                 }
                 textContainer.appendChild(span)
             })
 
+            // TODO: can toggle animation with style.setProperty(animname, none), animname, glitch
             console.log(textContainer)
         }
     }, [])
@@ -71,9 +77,9 @@ export default function Header() {
 
                 <div className="z-10">
                     <h1
-                        className={`${signikaNegative.className} mt-24 text-ghostwhite uppercase font-bold tracking-[0.5rem] text-4xl z-10 animate-fadeinfromright`}
+                        className={`${signikaNegative.className} mt-24 text-ghostwhite uppercase font-bold tracking-[0.5rem] text-4xl z-10 animate-fadeinfromright max-w-[10ch]`}
                     >
-                        Ismail \<br></br>Halili \
+                        Ismail \ Halili \
                     </h1>
                     <h2
                         className={`${signikaNegative.className} mt-4 text-ghostwhite uppercase font-thin tracking-[0.5rem] text-2xl z-10 animate-fadeinfromright`}

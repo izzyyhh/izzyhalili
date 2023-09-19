@@ -8,45 +8,8 @@ const signikaNegative = Signika_Negative({
 })
 
 export default function Header() {
-    useEffect(() => {
-        const ANIMATION_NAME = 'glitch-switch'
-        const GLITCH_CHARS = '`¡™£¢∞§¶•ªº–≠åß∂ƒ©˙∆˚¬…æ≈ç√∫˜µ≤≥÷/?░▒▓<>/'.split(
-            ''
-        )
-        const textContainer = document.querySelector('h1')
-        textContainer?.addEventListener('click', () => {
-            const element = document.querySelector('h1 > [data-char]:after')
-        })
-
-        if (textContainer) {
-            const text = textContainer.textContent
-            const characters = text!!.split('')
-            textContainer.textContent = ''
-
-            characters.forEach((char) => {
-                const span = document.createElement('span')
-                span.textContent = char
-
-                for (let index = 0; index < 10; index++) {
-                    span.style.setProperty(
-                        `--char-${index}`,
-                        `"${
-                            GLITCH_CHARS[
-                                Math.floor(Math.random() * GLITCH_CHARS.length)
-                            ]
-                        }"`
-                    )
-
-                    span.setAttribute('data-char', char)
-                    span.style.setProperty('--animation-name', ANIMATION_NAME)
-                }
-                textContainer.appendChild(span)
-            })
-
-            // TODO: can toggle animation with style.setProperty(animname, none), animname, glitch
-            console.log(textContainer)
-        }
-    }, [])
+    const GLITCH_CHARS = '`¡™£¢∞§¶•ªº–≠åß∂ƒ©˙∆˚¬…æ≈ç√∫˜µ≤≥÷/?░▒▓<>/'.split('')
+    const ANIMATION_NAME = 'glitch-switch'
 
     return (
         <header className=" h-screen w-full bg-nightblack flex flex-col overflow-hidden">
@@ -77,14 +40,64 @@ export default function Header() {
 
                 <div className="z-10">
                     <h1
-                        className={`${signikaNegative.className} mt-24 text-ghostwhite uppercase font-bold tracking-[0.5rem] text-4xl z-10 animate-fadeinfromright max-w-[10ch]`}
+                        className={`${signikaNegative.className} mt-24 text-ghostwhite uppercase font-bold tracking-[0.5rem] text-4xl z-10 animate-fadeinfromright max-w-[11ch]`}
                     >
-                        Ismail \ Halili \
+                        {'Ismail \\ Halili \\'.split('').map((c) => {
+                            let styles = Array.from(
+                                { length: 10 },
+                                (_, index) => ({
+                                    [`--char-${index}`]: `"${
+                                        GLITCH_CHARS[
+                                            Math.floor(
+                                                Math.random() *
+                                                    GLITCH_CHARS.length
+                                            )
+                                        ]
+                                    }"`,
+                                })
+                            ).reduce((acc, curr) => ({ ...acc, ...curr }), {})
+
+                            styles = {
+                                ...styles,
+                                '--animation-name': ANIMATION_NAME,
+                            }
+
+                            return (
+                                <span key={c} data-char={c} style={styles}>
+                                    {c}
+                                </span>
+                            )
+                        })}
                     </h1>
                     <h2
-                        className={`${signikaNegative.className} mt-4 text-ghostwhite uppercase font-thin tracking-[0.5rem] text-2xl z-10 animate-fadeinfromright`}
+                        className={`${signikaNegative.className} max-w-[14ch] mt-4 text-ghostwhite uppercase font-thin tracking-[0.5rem] text-2xl z-10 animate-fadeinfromright`}
                     >
-                        Software <br /> Engineer
+                        {'Software Engineer'.split('').map((c) => {
+                            let styles = Array.from(
+                                { length: 10 },
+                                (_, index) => ({
+                                    [`--char-${index}`]: `"${
+                                        GLITCH_CHARS[
+                                            Math.floor(
+                                                Math.random() *
+                                                    GLITCH_CHARS.length
+                                            )
+                                        ]
+                                    }"`,
+                                })
+                            ).reduce((acc, curr) => ({ ...acc, ...curr }), {})
+
+                            styles = {
+                                ...styles,
+                                '--animation-name': ANIMATION_NAME,
+                            }
+
+                            return (
+                                <span key={c} data-char={c} style={styles}>
+                                    {c}
+                                </span>
+                            )
+                        })}
                     </h2>
 
                     <div className="socials mt-12">
@@ -137,7 +150,7 @@ export default function Header() {
                 className={`${signikaNegative.className} font-thin tracking-widest text-center py-8`}
             >
                 <button className="animate-bounce">
-                    <span>About Me</span>&#11167;
+                    <span>About Me</span>&#9660;
                 </button>
             </div>
         </header>

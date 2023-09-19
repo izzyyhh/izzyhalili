@@ -9,7 +9,7 @@
 
 [data-char]:after {
     --txt: attr(data-char);
-    animation-duration: 0.2s;
+    animation-duration: 0.25s;
     animation-delay: 0.5s;
     animation-timing-function: steps(1);
     animation-fill-mode: backwards;
@@ -21,6 +21,11 @@
 }
 
 h1 > [data-char]:after {
+    animation-name: var(--animation-name);
+    animation-iteration-count: 4;
+}
+
+h2 > [data-char]:after {
     animation-name: var(--animation-name);
     animation-iteration-count: 4;
 }

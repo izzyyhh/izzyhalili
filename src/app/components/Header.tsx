@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 
 const signikaNegative = Signika_Negative({
     subsets: ['latin'],
+    variable: '--font-signikaNegative',
 })
 
 export default function Header() {
@@ -12,10 +13,10 @@ export default function Header() {
     const ANIMATION_NAME = 'glitch-switch'
 
     return (
-        <header className=" h-screen w-full bg-nightblack flex flex-col overflow-hidden">
+        <header className=" h-screen w-full bg-nightblack flex flex-col overflow-hidden lg:relative">
             <div className="p-8 flex justify-between items-center">
                 <p
-                    className={`${signikaNegative.className} text-ghostwhite uppercase font-bold tracking-[0.3rem] text-lg`}
+                    className={`${signikaNegative.variable} text-ghostwhite uppercase font-bold tracking-[0.3rem] text-lg`}
                 >
                     Izzy
                 </p>
@@ -27,8 +28,8 @@ export default function Header() {
                 </button>
             </div>
 
-            <div className="flex flex-auto gap-2">
-                <div className="animate-fadeinfromleft w-5/12 relative">
+            <div className="flex flex-auto gap-2 lg:mt-32">
+                <div className="animate-fadeinfromleft w-5/12 lg:w-64 relative">
                     <div className="imgbox w-[550px] absolute left-[-270px]">
                         <img
                             src="/me.png"
@@ -40,9 +41,9 @@ export default function Header() {
 
                 <div className="z-10">
                     <h1
-                        className={`${signikaNegative.className} mt-24 text-ghostwhite uppercase font-bold tracking-[0.5rem] text-4xl z-10 animate-fadeinfromright max-w-[11ch]`}
+                        className={`${signikaNegative.variable} mt-24 text-ghostwhite uppercase font-bold tracking-[0.5rem] text-4xl z-10 animate-fadeinfromright w-[11ch] lg:text-5xl lg:mt-36`}
                     >
-                        {'Ismail \\ Halili \\'.split('').map((c) => {
+                        {'Ismail \\ Halili \\'.split('').map((c, i) => {
                             let styles = Array.from(
                                 { length: 10 },
                                 (_, index) => ({
@@ -63,16 +64,20 @@ export default function Header() {
                             }
 
                             return (
-                                <span key={c} data-char={c} style={styles}>
+                                <span
+                                    key={`${c}-${i}`}
+                                    data-char={c}
+                                    style={styles}
+                                >
                                     {c}
                                 </span>
                             )
                         })}
                     </h1>
                     <h2
-                        className={`${signikaNegative.className} max-w-[14ch] mt-4 text-ghostwhite uppercase font-thin tracking-[0.5rem] text-2xl z-10 animate-fadeinfromright`}
+                        className={`${signikaNegative.variable} w-[15ch] mt-4 text-ghostwhite uppercase font-thin tracking-[0.5rem] text-2xl z-10 animate-fadeinfromright lg:text-3xl`}
                     >
-                        {'Software Engineer'.split('').map((c) => {
+                        {'Software Engineer'.split('').map((c, i) => {
                             let styles = Array.from(
                                 { length: 10 },
                                 (_, index) => ({
@@ -93,7 +98,11 @@ export default function Header() {
                             }
 
                             return (
-                                <span key={c} data-char={c} style={styles}>
+                                <span
+                                    key={`${c}-${i}`}
+                                    data-char={c}
+                                    style={styles}
+                                >
                                     {c}
                                 </span>
                             )
@@ -103,55 +112,73 @@ export default function Header() {
                     <div className="socials mt-12">
                         <ul className="flex gap-4 flex-col animate-fadeinfromright">
                             <li>
-                                <Image
-                                    src="/github-mark.svg"
-                                    height={32}
-                                    width={32}
-                                    alt="Github Logo"
-                                    className="dark:invert contrast-[1000]"
-                                    color="#000"
-                                />
+                                <a href="https://www.github.com/izzyyhh">
+                                    <Image
+                                        src="/github-mark.svg"
+                                        height={32}
+                                        width={32}
+                                        alt="Github Logo"
+                                        className="dark:invert contrast-[1000] hover:cursor-pointer"
+                                        color="#000"
+                                    />
+                                </a>
                             </li>
                             <li>
+                                <a href="https://www.linkedin.com/in/ismail-halili-46a2241b9"></a>
                                 <Image
                                     src="/linkedin.svg"
                                     height={32}
                                     width={32}
                                     alt="LinkedIn Logo"
-                                    className="dark:invert"
+                                    className="dark:invert hover:cursor-pointer"
                                     color="#000"
                                 />
                             </li>
                             <li>
-                                <Image
-                                    src="/instagram.svg"
-                                    height={32}
-                                    width={32}
-                                    alt="Instagram Logo"
-                                    className="dark:invert"
-                                    color="#000"
-                                />
+                                <a href="https://www.instagram.com/idoppelzy/">
+                                    <Image
+                                        src="/instagram.svg"
+                                        height={32}
+                                        width={32}
+                                        alt="Instagram Logo"
+                                        className="dark:invert hover:cursor-pointer"
+                                        color="#000"
+                                    />
+                                </a>
                             </li>
                             <li>
-                                <Image
-                                    src="/x.svg"
-                                    height={32}
-                                    width={32}
-                                    alt="X Twitter Logo"
-                                    className="dark:invert"
-                                    color="#000"
-                                />
+                                <a href="https://twitter.com/devizzyhal">
+                                    <Image
+                                        src="/x.svg"
+                                        height={32}
+                                        width={32}
+                                        alt="X Twitter Logo"
+                                        className="dark:invert hover:cursor-pointer"
+                                        color="#000"
+                                    />
+                                </a>
                             </li>
                         </ul>
                     </div>
                 </div>
+                <div
+                    className={`${signikaNegative.variable} hidden font-thin tracking-widest text-center py-8 lg:block ml-[200px] mt-[250px] text-3xl`}
+                >
+                    <p className="animate-bounce">
+                        {/* <span className="text-white">About Me &#9660;</span>  */}
+                        <span className="text-white">
+                            🔨 Page under construction
+                        </span>
+                    </p>
+                </div>
             </div>
             <div
-                className={`${signikaNegative.className} font-thin tracking-widest text-center py-8`}
+                className={`${signikaNegative.variable} font-thin tracking-widest text-center py-8 lg:hidden`}
             >
-                <button className="animate-bounce">
-                    <span>About Me</span>&#9660;
-                </button>
+                <p className="animate-bounce">
+                    {/* <span className="text-white">About Me &#9660;</span>  */}
+                    <span className="text-white">🔨 Under construction</span>
+                </p>
             </div>
         </header>
     )

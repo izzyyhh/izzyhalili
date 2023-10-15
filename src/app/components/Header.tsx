@@ -28,7 +28,7 @@ export default function Header() {
                 </button>
             </div>
 
-            <div className="flex flex-auto gap-2 lg:mt-16">
+            <div className="flex flex-auto gap-2 lg:mt-8 2xl:mt-32">
                 <div className="animate-fadeinfromleft w-5/12 lg:w-64 relative">
                     <div className="imgbox w-[550px] absolute left-[-270px]">
                         <img
@@ -41,7 +41,7 @@ export default function Header() {
 
                 <div className="z-10">
                     <h1
-                        className={`${signikaNegative.variable} mt-24 text-ghostwhite uppercase font-bold tracking-[0.5rem] text-4xl z-10 animate-fadeinfromright w-[16rem] lg:text-5xl lg:mt-36`}
+                        className={`${signikaNegative.variable} mt-24 text-ghostwhite uppercase font-bold tracking-[0.5rem] text-4xl z-10 animate-fadeinfromright w-[240px] lg:w-[280px] lg:text-5xl lg:mt-36`}
                     >
                         {'Ismail \\ Halili \\'.split('').map((c, i) => {
                             let styles = Array.from(
@@ -75,7 +75,7 @@ export default function Header() {
                         })}
                     </h1>
                     <h2
-                        className={`${signikaNegative.variable} w-[14rem] mt-4 text-ghostwhite uppercase font-thin tracking-[0.5rem] text-2xl z-10 animate-fadeinfromright lg:text-3xl`}
+                        className={`${signikaNegative.variable} w-[190px] lg:w-[240px] mt-4 text-ghostwhite uppercase font-thin tracking-[0.5rem] text-2xl z-10 animate-fadeinfromright lg:text-3xl`}
                     >
                         {'Software Engineer'.split('').map((c, i) => {
                             let styles = Array.from(

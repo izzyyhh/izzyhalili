@@ -111,49 +111,50 @@ export default function Header() {
 
                     <div className="socials mt-12">
                         <ul className="flex gap-4 flex-col animate-fadeinfromright">
-                            <li>
+                            <li className="hover:cursor-pointer">
                                 <a href="https://www.github.com/izzyyhh">
                                     <Image
                                         src="/github-mark.svg"
                                         height={32}
                                         width={32}
                                         alt="Github Logo"
-                                        className="dark:invert contrast-[1000] hover:cursor-pointer"
+                                        className="dark:invert contrast-[1000] "
                                         color="#000"
                                     />
                                 </a>
                             </li>
-                            <li>
-                                <a href="https://www.linkedin.com/in/ismail-halili-46a2241b9"></a>
-                                <Image
-                                    src="/linkedin.svg"
-                                    height={32}
-                                    width={32}
-                                    alt="LinkedIn Logo"
-                                    className="dark:invert hover:cursor-pointer"
-                                    color="#000"
-                                />
+                            <li className="hover:cursor-pointer">
+                                <a href="https://www.linkedin.com/in/ismail-halili-46a2241b9">
+                                    <Image
+                                        src="/linkedin.svg"
+                                        height={32}
+                                        width={32}
+                                        alt="LinkedIn Logo"
+                                        className="dark:invert "
+                                        color="#000"
+                                    />
+                                </a>
                             </li>
-                            <li>
+                            <li className="hover:cursor-pointer">
                                 <a href="https://www.instagram.com/idoppelzy/">
                                     <Image
                                         src="/instagram.svg"
                                         height={32}
                                         width={32}
                                         alt="Instagram Logo"
-                                        className="dark:invert hover:cursor-pointer"
+                                        className="dark:invert "
                                         color="#000"
                                     />
                                 </a>
                             </li>
-                            <li>
+                            <li className="hover:cursor-pointer">
                                 <a href="https://twitter.com/devizzyhal">
                                     <Image
                                         src="/x.svg"
                                         height={32}
                                         width={32}
                                         alt="X Twitter Logo"
-                                        className="dark:invert hover:cursor-pointer"
+                                        className="dark:invert "
                                         color="#000"
                                     />
                                 </a>

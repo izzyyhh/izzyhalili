@@ -13,7 +13,7 @@ export default function Header() {
     const ANIMATION_NAME = 'glitch-switch'
 
     return (
-        <header className=" h-screen w-full bg-nightblack flex flex-col overflow-hidden lg:relative">
+        <header className="min-h-screen w-full bg-nightblack flex flex-col overflow-hidden">
             <div className="p-8 flex justify-between items-center">
                 <p
                     className={`${signikaNegative.variable} text-ghostwhite uppercase font-bold tracking-[0.3rem] text-lg`}
@@ -28,20 +28,10 @@ export default function Header() {
                 </button>
             </div>
 
-            <div className="flex flex-auto gap-2 lg:mt-8 2xl:mt-32">
-                <div className="animate-fadeinfromleft w-5/12 lg:w-64 relative">
-                    <div className="imgbox w-[550px] absolute left-[-270px]">
-                        <img
-                            src="/me.png"
-                            alt="person, Ismail Halili"
-                            className=" contrast-[1.5] opacity-[0.2]"
-                        />
-                    </div>
-                </div>
-
+            <div className="flex flex-auto justify-start pl-8 items-center pb-8">
                 <div className="z-10">
                     <h1
-                        className={`${signikaNegative.variable} mt-24 text-ghostwhite uppercase font-bold tracking-[0.5rem] text-4xl z-10 animate-fadeinfromright w-[240px] lg:w-[280px] lg:text-5xl lg:mt-36`}
+                        className={`${signikaNegative.variable}text-ghostwhite uppercase font-bold tracking-[0.5rem] text-4xl z-10 animate-fadeinfromleft w-[240px]`}
                     >
                         {'Ismail \\ Halili \\'.split('').map((c, i) => {
                             let styles = Array.from(
@@ -75,7 +65,7 @@ export default function Header() {
                         })}
                     </h1>
                     <h2
-                        className={`${signikaNegative.variable} w-[190px] lg:w-[240px] mt-4 text-ghostwhite uppercase font-thin tracking-[0.5rem] text-2xl z-10 animate-fadeinfromright lg:text-3xl`}
+                        className={`${signikaNegative.variable} w-[190px] mt-4 text-ghostwhite uppercase font-thin tracking-[0.5rem] text-2xl z-10 animate-fadeinfromleft`}
                     >
                         {'Software Engineer'.split('').map((c, i) => {
                             let styles = Array.from(
@@ -110,7 +100,7 @@ export default function Header() {
                     </h2>
 
                     <div className="socials mt-12">
-                        <ul className="flex gap-4 flex-col animate-fadeinfromright">
+                        <ul className="flex gap-4 flex-col animate-fadeinfromleft">
                             <li className="hover:cursor-pointer">
                                 <a href="https://www.github.com/izzyyhh">
                                     <Image
@@ -162,19 +152,9 @@ export default function Header() {
                         </ul>
                     </div>
                 </div>
-                <div
-                    className={`${signikaNegative.variable} hidden font-thin tracking-widest text-center py-8 lg:block ml-[200px] mt-[250px] text-3xl`}
-                >
-                    <p className="animate-bounce">
-                        {/* <span className="text-white">About Me &#9660;</span>  */}
-                        <span className="text-white">
-                            🔨 Page under construction
-                        </span>
-                    </p>
-                </div>
             </div>
             <div
-                className={`${signikaNegative.variable} font-thin tracking-widest text-center py-8 lg:hidden`}
+                className={`${signikaNegative.variable} font-thin tracking-widest text-center py-8`}
             >
                 <p className="animate-bounce">
                     {/* <span className="text-white">About Me &#9660;</span>  */}

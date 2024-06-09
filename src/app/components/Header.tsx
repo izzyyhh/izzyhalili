@@ -27,12 +27,16 @@ export default function Header() {
 
     return (
         <header className="min-h-screen w-full bg-zinc dark:bg-zinc-950 p-4 grid grid-rows-header">
-            <div className=" flex justify-between items-center">
+            <motion.div
+                initial={{ opacity: 0, y: '-100%' }}
+                animate={{ opacity: 1, y: 0 }}
+                className=" flex justify-between items-center"
+            >
                 <p className={`uppercase font-bold tracking-[0.3rem] text-lg`}>
                     Izzy
                 </p>
                 <ModeToggle></ModeToggle>
-            </div>
+            </motion.div>
             <div className="self-center">
                 <motion.div
                     variants={containerVariants}
@@ -65,7 +69,13 @@ export default function Header() {
                 </motion.div>
             </div>
             <div>
-                <motion.div animate={{}}>
+                <motion.div
+                    style={{ x: '-150%' }}
+                    animate={{
+                        x: 0,
+                        transition: { duration: 0.4, delay: 0.8 },
+                    }}
+                >
                     <Card>
                         <CardHeader>
                             <div className="flex items-center gap-3 mb-2">
@@ -80,21 +90,21 @@ export default function Header() {
                                         transition: {
                                             duration: 0.8,
                                             repeat: Infinity,
-                                            repeatDelay: 8,
+                                            delay: 1,
+                                            repeatDelay: 6,
                                         },
                                     }}
                                     className="border-4 border-zinc-950 dark:border-zinc-100 rounded text-zinc-200 w-[1rem] h-[1rem]"
                                 ></motion.div>
                                 <motion.p
                                     animate={{
-                                        fontWeight: [400, 600, 400],
                                         scaleX: [1, 1.05, 1],
                                         transition: {
                                             type: 'tween',
-                                            duration: 0.6,
-                                            delay: 0.4,
+                                            duration: 0.65,
+                                            delay: 1.5,
                                             repeat: Infinity,
-                                            repeatDelay: 8,
+                                            repeatDelay: 6,
                                         },
                                     }}
                                     className="uppercase tracking-[0.3rem]"

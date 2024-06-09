@@ -10,6 +10,9 @@ const config = {
     ],
     prefix: '',
     theme: {
+        gridTemplateRows: {
+            header: 'max-content, 2fr 3fr',
+        },
         container: {
             center: true,
             padding: '2rem',

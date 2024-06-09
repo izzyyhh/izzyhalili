@@ -1,3 +1,4 @@
+import { ThemeProvider } from '@/components/theme-provider'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
@@ -19,7 +20,16 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <body className="text-white]">{children}</body>
+            <body className="text-white]">
+                <ThemeProvider
+                    attribute="class"
+                    defaultTheme="system"
+                    enableSystem
+                    disableTransitionOnChange
+                >
+                    {children}{' '}
+                </ThemeProvider>
+            </body>
         </html>
     )
 }

@@ -26,7 +26,7 @@ export default function Header() {
     }
 
     return (
-        <header className="min-h-screen w-full bg-zinc dark:bg-zinc-950 p-4 grid grid-rows-header">
+        <header className="min-h-screen w-full bg-zinc dark:bg-zinc-950 p-4 grid gap-6 grid-rows-header">
             <motion.div
                 initial={{ opacity: 0, y: '-100%' }}
                 animate={{ opacity: 1, y: 0 }}

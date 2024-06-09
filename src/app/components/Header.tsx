@@ -1,4 +1,5 @@
 'use client'
+import { ModeToggle } from '@/components/darkmode-toggle'
 import { Signika_Negative } from 'next/font/google'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
@@ -10,12 +11,13 @@ const signikaNegative = Signika_Negative({
 
 export default function Header() {
     return (
-        <header className="min-h-screen w-full bg-nightblack flex flex-col overflow-hidden">
+        <header className="min-h-screen w-full">
             <div className="p-8 flex justify-between items-center">
                 <p
-                    className={`${signikaNegative.variable} text-ghostwhite uppercase font-bold tracking-[0.3rem] text-lg`}
+                    className={`${signikaNegative.variable} uppercase font-bold tracking-[0.3rem] text-lg`}
                 >
                     Izzy
+                    <ModeToggle></ModeToggle>
                 </p>
                 <button className="w-8 h-3">
                     <div className="h-full flex flex-col justify-between">

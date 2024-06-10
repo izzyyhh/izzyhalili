@@ -11,7 +11,7 @@ const config = {
     prefix: '',
     theme: {
         gridTemplateRows: {
-            header: 'max-content, 2fr 3fr',
+            header: 'max-content max-content auto',
         },
         container: {
             center: true,

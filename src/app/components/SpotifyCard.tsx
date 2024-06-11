@@ -1,6 +1,5 @@
 import {
     Card,
-    CardContent,
     CardDescription,
     CardHeader,
     CardTitle,
@@ -13,9 +12,14 @@ import { PauseIcon, PlayIcon } from 'lucide-react'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
+export const isMobile = (userAgent: string): boolean => {
+    return /android.+mobile|ip(hone|[oa]d)/i.test(userAgent)
+}
+
 export function SpotifyCard() {
     const [track, setTrack] = useState<any>({})
     const [isPlay, setIsPlay] = useState(false)
+    const [mobileCheck, setMobileCheck] = useState(false)
 
     useEffect(() => {
         axios.get('/api/spotify').then((result: any) => {
@@ -28,6 +32,8 @@ export function SpotifyCard() {
         if (player) {
             player.volume = 0.5
         }
+
+        setMobileCheck(isMobile(navigator.userAgent))
     }, [])
     return (
         <Card>
@@ -131,30 +137,36 @@ export function SpotifyCard() {
                                 </CardDescription>
                             </div>
                         </div>
-                        <motion.div
-                            initial={{ opacity: 0, y: -20, display: 'none' }}
-                            animate={
-                                isPlay
-                                    ? { opacity: 1, y: 0, display: 'block' }
-                                    : { opacity: 0, y: -20 }
-                            }
-                            transition={{ duration: 0.5 }}
-                        >
-                            <Slider
-                                className="pt-2 "
-                                defaultValue={[50]}
-                                step={1}
-                                onValueChange={(val) => {
-                                    const player = document.getElementById(
-                                        'song'
-                                    ) as HTMLAudioElement
-
-                                    if (player) {
-                                        player.volume = val[0] / 100
-                                    }
+                        {!mobileCheck && (
+                            <motion.div
+                                initial={{
+                                    opacity: 0,
+                                    y: -20,
+                                    display: 'none',
                                 }}
-                            />
-                        </motion.div>
+                                animate={
+                                    isPlay
+                                        ? { opacity: 1, y: 0, display: 'block' }
+                                        : { opacity: 0, y: -20 }
+                                }
+                                transition={{ duration: 0.5 }}
+                            >
+                                <Slider
+                                    className="pt-2 "
+                                    defaultValue={[50]}
+                                    step={1}
+                                    onValueChange={(val) => {
+                                        const player = document.getElementById(
+                                            'song'
+                                        ) as HTMLAudioElement
+
+                                        if (player) {
+                                            player.volume = val[0] / 100
+                                        }
+                                    }}
+                                />
+                            </motion.div>
+                        )}
                     </>
                 )}
             </CardHeader>

@@ -19,7 +19,7 @@ export default function Header() {
     }
 
     return (
-        <header className="min-h-screen w-full bg-zinc dark:bg-zinc-950 p-4 grid gap-6 grid-rows-header">
+        <header className="min-h-screen w-full bg-zinc dark:bg-zinc-950 p-4 pt-2 grid gap-6 grid-rows-header">
             <motion.div
                 initial={{ opacity: 0, y: '-100%' }}
                 animate={{ opacity: 1, y: 0 }}
@@ -68,6 +68,7 @@ export default function Header() {
                         x: 0,
                         transition: { duration: 0.4, delay: 0.8 },
                     }}
+                    className="flex flex-col gap-2"
                 >
                     <VisitCard />
                     <SpotifyCard />

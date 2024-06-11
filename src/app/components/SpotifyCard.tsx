@@ -17,16 +17,28 @@ export const isMobile = (userAgent: string): boolean => {
 }
 
 export function SpotifyCard() {
-    const [track, setTrack] = useState<any>({})
+    const [track, setTrack] = useState<any>(null)
     const [isPlay, setIsPlay] = useState(false)
     const [mobileCheck, setMobileCheck] = useState(false)
 
     useEffect(() => {
-        axios.get('/api/spotify').then((result: any) => {
-            console.log(result)
-            setTrack(result.data.track)
-        })
+        const fetchTrack = async () => {
+            try {
+                const result = await axios.get('/api/spotify')
+                const newTrack = result.data.track
+                if (!track || newTrack?.name !== track?.name) {
+                    setTrack(newTrack)
+                }
+            } catch (error) {
+                console.error('Error fetching track:', error)
+            }
+        }
+        fetchTrack()
+        const intervalId = setInterval(fetchTrack, 15000)
+        return () => clearInterval(intervalId)
+    }, [track])
 
+    useEffect(() => {
         const player = document.getElementById('song') as HTMLAudioElement
 
         if (player) {
@@ -95,37 +107,41 @@ export function SpotifyCard() {
                                     src={track?.preview}
                                     onEnded={() => setIsPlay(false)}
                                 ></audio>
-                                {!isPlay ? (
-                                    <PlayIcon
-                                        onClick={() => {
-                                            const player =
-                                                document.getElementById(
-                                                    'song'
-                                                ) as HTMLAudioElement
+                                {track?.preview && (
+                                    <>
+                                        {!isPlay ? (
+                                            <PlayIcon
+                                                onClick={() => {
+                                                    const player =
+                                                        document.getElementById(
+                                                            'song'
+                                                        ) as HTMLAudioElement
 
-                                            if (player) {
-                                                player.play()
-                                                setIsPlay(true)
-                                            }
-                                        }}
-                                        width={20}
-                                        className="absolute cursor-pointer"
-                                    ></PlayIcon>
-                                ) : (
-                                    <PauseIcon
-                                        className="absolute cursor-pointer"
-                                        onClick={() => {
-                                            const player =
-                                                document.getElementById(
-                                                    'song'
-                                                ) as HTMLAudioElement
+                                                    if (player) {
+                                                        player.play()
+                                                        setIsPlay(true)
+                                                    }
+                                                }}
+                                                width={20}
+                                                className="absolute cursor-pointer"
+                                            ></PlayIcon>
+                                        ) : (
+                                            <PauseIcon
+                                                className="absolute cursor-pointer"
+                                                onClick={() => {
+                                                    const player =
+                                                        document.getElementById(
+                                                            'song'
+                                                        ) as HTMLAudioElement
 
-                                            if (player) {
-                                                player.pause()
-                                                setIsPlay(false)
-                                            }
-                                        }}
-                                    ></PauseIcon>
+                                                    if (player) {
+                                                        player.pause()
+                                                        setIsPlay(false)
+                                                    }
+                                                }}
+                                            ></PauseIcon>
+                                        )}
+                                    </>
                                 )}
                             </div>
                             <div>
@@ -137,7 +153,7 @@ export function SpotifyCard() {
                                 </CardDescription>
                             </div>
                         </div>
-                        {!mobileCheck && (
+                        {!mobileCheck && track?.preview && (
                             <motion.div
                                 initial={{
                                     opacity: 0,

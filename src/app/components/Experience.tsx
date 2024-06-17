@@ -17,7 +17,11 @@ export function Experience() {
             <h2 className="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight first:mt-0">
                 /Experience
             </h2>
-            <p className="leading-7 [&:not(:first-child)]:mt-6">Worked here</p>
+            <p className="leading-7 [&:not(:first-child)]:mt-6">
+                Worked here with tabs
+            </p>
+            ||00 cyber soldier ||01 runtastic backend intern after coding
+            contest blabla
         </motion.section>
     )
 }

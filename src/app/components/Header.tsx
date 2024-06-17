@@ -19,7 +19,7 @@ export default function Header() {
     }
 
     return (
-        <header className="min-h-screen w-full bg-zinc dark:bg-zinc-950 p-4 pt-2 grid gap-6 grid-rows-header">
+        <header className="w-full grid gap-6 grid-rows-header">
             <motion.div
                 initial={{ opacity: 0, y: '-100%' }}
                 animate={{ opacity: 1, y: 0 }}
@@ -54,10 +54,12 @@ export default function Header() {
                         variants={itemVariants}
                         className="leading-7 [&:not(:first-child)]:mt-6"
                     >
-                        I am a software engineer based in Salzburg, Austria. My
-                        primary focus is on software engineering, but I also
-                        have good experience in HCI and data science. I&apos;m
-                        looking forward to working on impactful projects.
+                        I&apos;m a software engineer based in Salzburg, Austria.
+                        While my primary focus is on software, I also have
+                        strong knowledge in Human-Computer Interaction and Data
+                        Science. I worked on the backend of the Adidas Running
+                        app, which has millions of users. I&apos;m excited to
+                        work on further impactful projects.
                     </motion.p>
                 </motion.div>
             </div>
@@ -68,7 +70,7 @@ export default function Header() {
                         x: 0,
                         transition: { duration: 0.4, delay: 0.8 },
                     }}
-                    className="flex flex-col gap-2"
+                    className="flex flex-col gap-3"
                 >
                     <VisitCard />
                     <SpotifyCard />

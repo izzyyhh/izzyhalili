@@ -42,7 +42,7 @@ export function VisitCard() {
                         Izzy
                     </motion.p>
                 </div>
-                <CardTitle>Ismail Halili, BSc.</CardTitle>
+                <CardTitle>Ismail Halili, BSc</CardTitle>
                 <CardDescription>
                     Masters student @ FHS (UAS Salzburg)
                 </CardDescription>

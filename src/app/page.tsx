@@ -1,14 +1,13 @@
+import { AboutMe } from './components/AboutMe'
+import { Experience } from './components/Experience'
 import Header from './components/Header'
 
 export default function Home() {
     return (
-        <>
+        <div className="bg-zinc grid gap-20 dark:bg-zinc-950 p-4 pt-2">
             <Header />
-            <section>
-                <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">
-                    About me
-                </h2>
-            </section>
-        </>
+            <AboutMe />
+            <Experience />
+        </div>
     )
 }

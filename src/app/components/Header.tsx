@@ -54,12 +54,24 @@ export default function Header() {
                         variants={itemVariants}
                         className="leading-7 [&:not(:first-child)]:mt-6"
                     >
-                        I&apos;m a software engineer based in Salzburg, Austria.
-                        While my primary focus is on software, I also have
-                        strong knowledge in Human-Computer Interaction and Data
-                        Science. I worked on the backend of the Adidas Running
-                        app, which has millions of users. I&apos;m excited to
-                        work on further impactful projects.
+                        I&apos;m a software engineer currently based in
+                        Salzburg, Austria. While my primary focus is on
+                        software, I also have strong knowledge in Human-Computer
+                        Interaction and Data Science. I worked on the backend of
+                        the{' '}
+                        <a
+                            href="https://www.runtastic.com/"
+                            className="underline"
+                        >
+                            adidas Running
+                        </a>{' '}
+                        app, which has millions of users. I&apos;m contributing
+                        to the next generation web site of the{' '}
+                        <a href="https://www.vim.org/" className="underline">
+                            vim editor
+                        </a>
+                        . I&apos;m excited to work on further impactful
+                        projects.
                     </motion.p>
                 </motion.div>
             </div>

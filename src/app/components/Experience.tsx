@@ -57,10 +57,10 @@ export function Experience() {
                     {selectedTab === 'aaf' && (
                         <motion.div
                             key="aaf"
-                            initial={{ opacity: 0, y: 50 }}
+                            initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: 50 }}
-                            transition={{ duration: 0.4 }}
+                            exit={{ opacity: 0, y: 20 }}
+                            transition={{ duration: 0.3, type: 'tween' }}
                         >
                             <ArmedForces />
                         </motion.div>
@@ -69,10 +69,10 @@ export function Experience() {
                     {selectedTab === 'adidas' && (
                         <motion.div
                             key="adidas"
-                            initial={{ opacity: 0, y: 50 }}
+                            initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: 50 }}
-                            transition={{ duration: 0.4 }}
+                            exit={{ opacity: 0, y: 20 }}
+                            transition={{ duration: 0.3, type: 'tween' }}
                         >
                             <Adidas />
                         </motion.div>

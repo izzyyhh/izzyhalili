@@ -5,8 +5,22 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { SetStateAction, useEffect, useState } from 'react'
 import { ArmedForces } from './experience/armedforces'
 import { Adidas } from './experience/adidas'
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
+} from '@/components/ui/carousel'
+import { Card, CardContent } from '@/components/ui/card'
+import Autoplay from 'embla-carousel-autoplay'
 
 export function Projects() {
+    const projects = [
+        { title: 'YouRadio', description: 'amk' },
+        { title: 'Dast - Decide fast', description: 'amk' },
+        { title: 'Pixed', description: 'amk' },
+    ]
     return (
         <motion.section
             initial="hidden"
@@ -30,7 +44,38 @@ export function Projects() {
                 .
             </p>
             <div>
-                <div>carousel</div>
+                <div className="flex justify-center">
+                    <Carousel
+                        className="w-full max-w-sm relative"
+                        plugins={[
+                            Autoplay({
+                                delay: 5000,
+                            }),
+                        ]}
+                    >
+                        <CarouselContent>
+                            {projects.map((p, index) => (
+                                <CarouselItem key={index} className="">
+                                    <div className="p-1">
+                                        <Card>
+                                            <CardContent className="flex items-center aspect-video justify-center p-6">
+                                                <p>{p.title}</p>
+                                            </CardContent>
+                                        </Card>
+                                    </div>
+                                </CarouselItem>
+                            ))}
+                        </CarouselContent>
+                        <CarouselPrevious
+                            variant={'ghost'}
+                            className="absolute mt-auto left-2"
+                        />
+                        <CarouselNext
+                            variant={'ghost'}
+                            className="absolute mt-auto right-2"
+                        />
+                    </Carousel>
+                </div>
                 <div>grid</div>
             </div>
         </motion.section>

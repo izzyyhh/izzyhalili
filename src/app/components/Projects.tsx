@@ -14,12 +14,34 @@ import {
 } from '@/components/ui/carousel'
 import { Card, CardContent } from '@/components/ui/card'
 import Autoplay from 'embla-carousel-autoplay'
+import Image from 'next/image'
+import { GitHubLogoIcon } from '@radix-ui/react-icons'
+import { Link } from 'lucide-react'
 
 export function Projects() {
     const projects = [
-        { title: 'YouRadio', description: 'amk' },
-        { title: 'Dast - Decide fast', description: 'amk' },
-        { title: 'Pixed', description: 'amk' },
+        {
+            title: 'YouRadio',
+            description: 'Enjoy listening to music together',
+            image: '/youradio.jpeg',
+            gh: 'https://github.com/izzyyhh/youradio',
+            yt: '',
+            url: '',
+        },
+        {
+            title: 'Dast - Decide fast',
+            description: 'Quick, fair, and easy group decision-making',
+            image: '/dast_e.jpg',
+            gh: 'https://github.com/izzyyhh/decision',
+            url: 'https://decision.projects.multimediatechnology.at/',
+        },
+        {
+            title: 'Pixed',
+            description:
+                'Share your memories with friends and loved ones in the easiest way possible',
+            image: '/pixed_screen_e.jpg',
+            url: 'https://pixed.cloud',
+        },
     ]
     return (
         <motion.section
@@ -46,10 +68,13 @@ export function Projects() {
             <div>
                 <div className="flex justify-center">
                     <Carousel
-                        className="w-full max-w-sm relative"
+                        className="w-full max-w-md relative"
+                        opts={{ loop: true }}
                         plugins={[
                             Autoplay({
-                                delay: 5000,
+                                delay: 6000,
+                                stopOnInteraction: false,
+                                stopOnMouseEnter: true,
                             }),
                         ]}
                     >
@@ -57,9 +82,53 @@ export function Projects() {
                             {projects.map((p, index) => (
                                 <CarouselItem key={index} className="">
                                     <div className="p-1">
-                                        <Card>
-                                            <CardContent className="flex items-center aspect-video justify-center p-6">
-                                                <p>{p.title}</p>
+                                        <Card className=" overflow-clip">
+                                            <CardContent className="relative flex items-center aspect-video justify-center p-6 flex-col">
+                                                {p.title === 'Pixed' ? (
+                                                    <img
+                                                        className="absolute z-0 brightness-[35%] object-bottom"
+                                                        alt={p.title}
+                                                        src={p.image}
+                                                    ></img>
+                                                ) : (
+                                                    <img
+                                                        className="absolute z-0 brightness-[45%] object-bottom"
+                                                        alt={p.title}
+                                                        src={p.image}
+                                                    ></img>
+                                                )}
+
+                                                <h3 className="z-10 scroll-m-20 text-2xl font-semibold tracking-tight text-zinc-50">
+                                                    {p.title}
+                                                </h3>
+                                                <small className="z-10 text-zinc-50 text-center max-w-[80%]">
+                                                    {p.description}
+                                                </small>
+                                                <div className="position absolute text-white z-10 bottom-0 flex justify-between pb-4 items-center gap-2">
+                                                    {p.gh && (
+                                                        <a
+                                                            href={p.gh}
+                                                            className="hover:opacity-80"
+                                                        >
+                                                            <GitHubLogoIcon
+                                                                width={24}
+                                                                height={24}
+                                                            ></GitHubLogoIcon>
+                                                        </a>
+                                                    )}
+
+                                                    {p.url && (
+                                                        <a
+                                                            className="hover:opacity-80"
+                                                            href={p.url}
+                                                        >
+                                                            <Link
+                                                                width={20}
+                                                                height={20}
+                                                            ></Link>
+                                                        </a>
+                                                    )}
+                                                </div>
                                             </CardContent>
                                         </Card>
                                     </div>
@@ -68,11 +137,11 @@ export function Projects() {
                         </CarouselContent>
                         <CarouselPrevious
                             variant={'ghost'}
-                            className="absolute mt-auto left-2"
+                            className="absolute mt-auto left-2 text-zinc-400"
                         />
                         <CarouselNext
                             variant={'ghost'}
-                            className="absolute mt-auto right-2"
+                            className="absolute mt-auto right-2 text-zinc-400"
                         />
                     </Carousel>
                 </div>

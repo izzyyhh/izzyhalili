@@ -12,7 +12,7 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from '@/components/ui/carousel'
-import { Card, CardContent } from '@/components/ui/card'
+import { Card, CardContent, CardDescription } from '@/components/ui/card'
 import Autoplay from 'embla-carousel-autoplay'
 import Image from 'next/image'
 import { GitHubLogoIcon } from '@radix-ui/react-icons'
@@ -145,7 +145,20 @@ export function Projects() {
                         />
                     </Carousel>
                 </div>
-                <div>grid</div>
+                <h3 className="scroll-m-20 text-2xl mt-6 font-semibold tracking-tight">
+                    More projects
+                </h3>
+                <div className="grid grid-cols-2 gap-2">
+                    {[1, 2, 3, 4, 5, 6, 7, 8].map((_, i) => {
+                        console.log('he')
+                        return (
+                            <Card className="aspect-square" key={i}>
+                                <h4>Project</h4>
+                                <CardDescription>Oh</CardDescription>
+                            </Card>
+                        )
+                    })}
+                </div>
             </div>
         </motion.section>
     )

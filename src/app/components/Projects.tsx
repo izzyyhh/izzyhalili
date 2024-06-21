@@ -52,14 +52,14 @@ export function Projects() {
             title: 'Bookommender',
             description:
                 'A recommender system that recommends books for users through collaborative filtering and factorization machine.',
-            gh: 'https://github.com/izzyyhh/league_items_solr_react_app',
+            gh: 'https://github.com/izzyyhh/bookrecommender',
             tech: 'Python, FM, React',
         },
         {
             title: 'Pokédex',
             description:
                 'An Android Pokédex app that displays information about Pokémon. Add your favorite Pokémon to your list!',
-            gh: 'https://github.com/izzyyhh/bookrecommender',
+            gh: 'https://github.com/izzyyhh/android_pokedex',
             tech: 'Kotlin, Jetpack Compose',
         },
         {
@@ -73,7 +73,7 @@ export function Projects() {
             title: 'Anime Quotes',
             description:
                 'A progressive web app with an Anime Quotes feed, where you can like quotes and save them.',
-            gh: 'https://github.com/izzyyhh/league_items_solr_react_app',
+            gh: 'https://github.com/izzyyhh/anime-quotes-pwa',
             tech: 'JavaScript, Service Workers',
         },
     ]

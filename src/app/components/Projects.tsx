@@ -108,7 +108,7 @@ export function Projects() {
                         plugins={[
                             Autoplay({
                                 delay: 6000,
-                                stopOnInteraction: false,
+                                stopOnInteraction: true,
                                 stopOnMouseEnter: true,
                             }),
                         ]}

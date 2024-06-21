@@ -40,7 +40,7 @@ export function Projects() {
         {
             title: 'Pixed',
             description:
-                'Share your memories with friends and loved ones in the easiest way possible',
+                'Memory sharing with friends in the easiest way possible',
             image: '/pixed_screen_e.jpg',
             url: 'https://pixed.cloud',
             tech: 'TS, AWS, React',
@@ -101,9 +101,9 @@ export function Projects() {
                 .
             </p>
             <div className="flex flex-col items-center">
-                <div className="flex justify-center max-w-[90vw]">
+                <div className="flex justify-center max-w-[90vw] md:max-w-none">
                     <Carousel
-                        className="w-full max-w-md relative"
+                        className="w-full max-w-md md:max-w-[90%] pt-4 pb-4 relative"
                         opts={{ loop: true }}
                         plugins={[
                             Autoplay({
@@ -133,15 +133,15 @@ export function Projects() {
                                                     ></img>
                                                 )}
 
-                                                <h3 className="z-10 scroll-m-20 text-2xl font-semibold tracking-tight text-zinc-50">
+                                                <h3 className="z-10 scroll-m-20 text-2xl md:text-5xl font-semibold tracking-tight text-zinc-50">
                                                     {p.title}
                                                 </h3>
-                                                <small className="z-10 text-zinc-50 text-center max-w-[80%]">
+                                                <small className="z-10 md:pt-2 text-zinc-50 text-center max-w-[80%]">
                                                     {p.description}
                                                 </small>
-                                                <p className="z-10 opacity-50 text-center text-[0.7rem] mt-[0.1rem] text-white">
+                                                {/* <p className="z-10 pt-1 opacity-50 text-center text-[0.7rem] mt-[0.1rem] text-white">
                                                     {p.tech}
-                                                </p>
+                                                </p> */}
                                                 <div className="position absolute text-white z-10 bottom-0 flex justify-between pb-4 items-center gap-2">
                                                     {p.gh && (
                                                         <a
@@ -187,7 +187,7 @@ export function Projects() {
                     <h3 className="scroll-m-20 text-2xl mt-6 pb-4 font-semibold tracking-tight">
                         More projects
                     </h3>
-                    <div className="grid grid-cols-1 xs:grid-cols-2 gap-2">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                         {moreProjects.map((p, i) => {
                             return (
                                 <Card className="p-4 pb-8" key={i}>

@@ -21,14 +21,11 @@ export function AboutMe() {
                     <strong>University of Applied Sciences Salzburg</strong>
                 </a>
                 . Previously, I interned at <strong>adidas</strong> Runtastic,
-                where I worked with professionals to contribute to the backend
-                for the{' '}
+                where I contributed to the backend for the{' '}
                 <a href="https://www.runtastic.com/" className="underline">
                     adidas Running
                 </a>{' '}
-                app, serving millions of users with high-scale and high-quality
-                solutions. Additionally, during my compulsory military service
-                as a cyber soldier, I worked on projects using JavaScript.
+                app, serving millions of users with high-scale.
             </p>
             <div>
                 <p className="leading-7 mt-3">
@@ -54,8 +51,9 @@ export function AboutMe() {
             <p className="leading-7 [&:not(:first-child)]:mt-3">
                 Outside of academics and work, I am passionate about software
                 engineering and enjoy watching content related to it on Twitch
-                and YouTube. In my leisure time, I enjoy sports, traveling,
-                playing video games and occasionally creating content on TikTok.
+                and YouTube. In my leisure time, I enjoy sports, anime,
+                traveling, playing video games and occasionally creating content
+                on TikTok.
             </p>
         </motion.section>
     )

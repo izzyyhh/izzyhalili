@@ -10,7 +10,7 @@ export function ArmedForces() {
                 </a>
             </h4>
             <p className="mt-2 uppercase text-sm text-muted-foreground">
-                August 2021 - Nov 2021
+                OCT 2019 - MAR 2020
             </p>
             <p className="leading-7 [&:not(:first-child)]:mt-6">
                 During my compulsory military service as a cyber soldier, which

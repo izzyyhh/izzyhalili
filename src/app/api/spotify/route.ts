@@ -4,7 +4,7 @@ import NodeCache from 'node-cache'
 
 const tokenCache = new NodeCache({ stdTTL: 1800 })
 
-export async function GET() {
+export async function GET(request: Request) {
     const access_token = await getToken()
     const currentlyResponse = await axios({
         url: 'https://api.spotify.com/v1/me/player/currently-playing',

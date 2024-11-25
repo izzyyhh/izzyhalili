@@ -4,9 +4,14 @@ import {
     CardHeader,
     CardTitle,
 } from '@/components/ui/card'
-import { GitHubLogoIcon, LinkedInLogoIcon } from '@radix-ui/react-icons'
+import {
+    GitHubLogoIcon,
+    LinkedInLogoIcon,
+    TwitterLogoIcon,
+} from '@radix-ui/react-icons'
 import { motion } from 'framer-motion'
 import { Mail } from 'lucide-react'
+import Image from 'next/image'
 
 export function VisitCard() {
     return (
@@ -42,11 +47,9 @@ export function VisitCard() {
                         Izzy
                     </motion.p>
                 </div>
-                <CardTitle>Ismail Halili, BSc</CardTitle>
-                <CardDescription>
-                    Masters student @ FHS (UAS Salzburg)
-                </CardDescription>
-                <div className="flex gap-2 pt-1 pb-1">
+                <CardTitle>Ismail Halili, MSc</CardTitle>
+                <CardDescription>Software Engineer</CardDescription>
+                <div className="flex gap-2 pt-1 pb-1 items-center">
                     <a href="mailto:izzy@izzyhalili.com">
                         <Mail></Mail>
                     </a>
@@ -58,6 +61,14 @@ export function VisitCard() {
                             width={24}
                             height={24}
                         ></LinkedInLogoIcon>
+                    </a>
+                    <a href="https://x.com/devizzyhal">
+                        <Image
+                            src={'/x.svg'}
+                            width={22}
+                            height={22}
+                            alt="X logo"
+                        ></Image>
                     </a>
                 </div>
             </CardHeader>

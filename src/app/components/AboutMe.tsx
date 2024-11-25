@@ -15,13 +15,16 @@ export function AboutMe() {
                 /About me
             </h2>
             <p className="leading-7 [&:not(:first-child)]:mt-6">
-                I am currently pursuing a{' '}
-                <u>Master of Science in Engineering</u> at the{' '}
+                I recently graduated with distinction, earning a{' '}
+                <u>Master of Science in Engineering</u> from the{' '}
                 <a href="https://www.fh-salzburg.ac.at/en/about-fh-salzburg/about-us">
                     <strong>University of Applied Sciences Salzburg</strong>
                 </a>
-                . Previously, I interned at <strong>adidas</strong> Runtastic,
-                where I contributed to the backend for the{' '}
+                . I wrote my thesis on influence maximization, exploring the
+                potential of utilizing the friendship paradox to enhance the
+                spread of influence in networks. During my studies, I completed
+                an internship at <strong>adidas Runtastic</strong> , where I
+                contributed to the backend for the{' '}
                 <a href="https://www.runtastic.com/" className="underline">
                     adidas Running
                 </a>{' '}
@@ -29,10 +32,9 @@ export function AboutMe() {
             </p>
             <div>
                 <p className="leading-7 mt-3">
-                    My journey into software engineering began at the age of 17,
-                    and has since led me to explore various frameworks and
-                    programming languages. The following ones are currently my
-                    favorites:
+                    My journey into software began at the age of 17, and has
+                    since led me to explore various frameworks and programming
+                    languages. The following ones are currently my favorites:
                 </p>
                 <div className="flex text-sm gap-4">
                     <ul className="my-6 ml-6 list-disc [&>li]:mt-1 ">
@@ -51,7 +53,7 @@ export function AboutMe() {
             <p className="leading-7 [&:not(:first-child)]:mt-3">
                 Outside of academics and work, I am passionate about software
                 engineering and enjoy watching content related to it on Twitch
-                and YouTube. In my leisure time, I enjoy sports, anime,
+                and YouTube. In my leisure time, I enjoy sports, piano, anime,
                 traveling, playing video games and occasionally creating content
                 on TikTok.
             </p>

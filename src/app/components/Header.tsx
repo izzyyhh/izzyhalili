@@ -1,104 +1,93 @@
-import { Signika_Negative } from 'next/font/google'
-import Image from 'next/image'
-
-const signikaNegative = Signika_Negative({
-    subsets: ['latin'],
-})
+'use client'
+import { ModeToggle } from '@/components/darkmode-toggle'
+import { motion } from 'framer-motion'
+import { VisitCard } from './VisitCard'
+import { SpotifyCard } from './SpotifyCard'
 
 export default function Header() {
+    const containerVariants = {
+        visible: {
+            transition: {
+                staggerChildren: 0.3,
+            },
+        },
+    }
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0 },
+    }
+
     return (
-        <header className=" h-screen w-full bg-nightblack flex flex-col overflow-hidden">
-            <div className="p-8 flex justify-between items-center">
-                <p
-                    className={`${signikaNegative.className} text-ghostwhite uppercase font-bold tracking-[0.3rem] text-lg`}
-                >
+        <header className="w-full grid gap-6 grid-rows-header">
+            <motion.div
+                initial={{ opacity: 0, y: '-100%' }}
+                animate={{ opacity: 1, y: 0 }}
+                className=" flex justify-between items-center"
+            >
+                <p className={`uppercase font-bold tracking-[0.3rem] text-lg`}>
                     Izzy
                 </p>
-                <button className="w-8 h-3">
-                    <div className="h-full flex flex-col justify-between">
-                        <div className="h-[2px] w-full bg-ghostwhite"></div>
-                        <div className="h-[2px] w-[80%] bg-ghostwhite ml-auto"></div>
-                    </div>
-                </button>
-            </div>
-
-            <div className="flex flex-auto gap-2">
-                <div className="animate-fadeinfromleft w-5/12 relative">
-                    <div className="imgbox w-[550px] absolute left-[-270px]">
-                        <img
-                            src="/me.png"
-                            alt="person, Ismail Halili"
-                            className=" contrast-[1.5] opacity-[0.2]"
-                        />
-                    </div>
-                </div>
-
-                <div className="z-10">
-                    <h1
-                        className={`${signikaNegative.className} mt-24 text-ghostwhite uppercase font-bold tracking-[0.5rem] text-4xl z-10 animate-fadeinfromright`}
+                <ModeToggle></ModeToggle>
+            </motion.div>
+            <div className="self-center">
+                <motion.div
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
+                    className="h-container flex flex-col"
+                >
+                    <motion.h1
+                        variants={itemVariants}
+                        className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl "
+                        whileTap={{ scale: 1.05 }}
                     >
-                        Ismail \<br></br>Halili \
-                    </h1>
-                    <h2
-                        className={`${signikaNegative.className} mt-4 text-ghostwhite uppercase font-thin tracking-[0.5rem] text-2xl z-10 animate-fadeinfromright`}
+                        Hey, I am Izzy
+                    </motion.h1>
+                    <motion.h4
+                        variants={itemVariants}
+                        className="scroll-m-20 text-xl font-light tracking-tight pt-2"
                     >
-                        Software <br /> Engineer
-                    </h2>
-
-                    <div className="socials mt-12">
-                        <ul className="flex gap-4 flex-col animate-fadeinfromright">
-                            <li>
-                                <Image
-                                    src="/github-mark.svg"
-                                    height={32}
-                                    width={32}
-                                    alt="Github Logo"
-                                    className="dark:invert contrast-[1000]"
-                                    color="#000"
-                                />
-                            </li>
-                            <li>
-                                <Image
-                                    src="/linkedin.svg"
-                                    height={32}
-                                    width={32}
-                                    alt="LinkedIn Logo"
-                                    className="dark:invert"
-                                    color="#000"
-                                />
-                            </li>
-                            <li>
-                                <Image
-                                    src="/instagram.svg"
-                                    height={32}
-                                    width={32}
-                                    alt="Instagram Logo"
-                                    className="dark:invert"
-                                    color="#000"
-                                />
-                            </li>
-                            <li>
-                                <Image
-                                    src="/x.svg"
-                                    height={32}
-                                    width={32}
-                                    alt="X Twitter Logo"
-                                    className="dark:invert"
-                                    color="#000"
-                                />
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                        And I develop software
+                    </motion.h4>
+                    <motion.p
+                        variants={itemVariants}
+                        className="leading-7 [&:not(:first-child)]:mt-6"
+                    >
+                        I&apos;m a software engineer currently based in
+                        Salzburg, Austria. While my primary focus is on
+                        software, I also have strong knowledge in Human-Computer
+                        Interaction and Data Science. I worked on the backend of
+                        the{' '}
+                        <a
+                            href="https://www.runtastic.com/"
+                            className="underline"
+                        >
+                            adidas Running
+                        </a>{' '}
+                        app, which has millions of users. I&apos;m contributing
+                        to the next generation web site of the{' '}
+                        <a href="https://www.vim.org/" className="underline">
+                            vim editor
+                        </a>
+                        . I&apos;m excited to work on further impactful
+                        projects.
+                    </motion.p>
+                </motion.div>
             </div>
-            <div
-                className={`${signikaNegative.className} font-thin tracking-widest text-center py-8`}
-            >
-                <button className="animate-bounce">
-                    <span>About Me</span>&#11167;
-                </button>
+            <div>
+                <motion.div
+                    style={{ opacity: 0 }}
+                    animate={{
+                        opacity: 1,
+                        transition: { duration: 0.4, delay: 1 },
+                    }}
+                    className="flex flex-col gap-3"
+                >
+                    <VisitCard />
+                    <SpotifyCard />
+                </motion.div>
             </div>
         </header>
     )
 }
-// TODO: GLITCHY TEXT ALL 20 seconds or so !

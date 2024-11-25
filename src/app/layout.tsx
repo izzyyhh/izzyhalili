@@ -1,8 +1,14 @@
+import { ThemeProvider } from '@/components/theme-provider'
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter as FontSans } from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'] })
+const fontSans = FontSans({
+    subsets: ['latin'],
+    variable: '--font-sans',
+})
+
+import { cn } from '@/lib/utils'
 
 export const metadata: Metadata = {
     title: 'Izzy Halili',
@@ -10,16 +16,28 @@ export const metadata: Metadata = {
         "Hello my name's Izzy, a software engineer living in Austria. I love to code and create software that either solves problems or that are cool to use.",
 }
 
-// TODO: think about if u really want a snap scroll fullpage stuff
-
 export default function RootLayout({
     children,
 }: {
     children: React.ReactNode
 }) {
     return (
-        <html lang="en">
-            <body className="text-white">{children}</body>
+        <html lang="en" suppressHydrationWarning={true}>
+            <body
+                className={cn(
+                    'bg-background font-sans antialiased',
+                    fontSans.variable
+                )}
+            >
+                <ThemeProvider
+                    attribute="class"
+                    defaultTheme="system"
+                    enableSystem
+                    disableTransitionOnChange
+                >
+                    {children}
+                </ThemeProvider>
+            </body>
         </html>
     )
 }

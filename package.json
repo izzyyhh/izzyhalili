@@ -6,7 +6,9 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "lint": "next lint"
+        "lint": "next lint",
+        "scp-build": "npm run build && scp -i ~/.ssh/izzys_rsa -r .next rizzy@izzyhalili.com:~/izzyhalili",
+        "remote:start": "ssh -i ~/.ssh/izzys_rsa rizzy@izzyhalili.com 'cd izzyhalili/ && pm2 delete izzyhalili || true && pm2 start npm --name \"izzyhalili\" -- run start'"
     },
     "dependencies": {
         "@radix-ui/react-dropdown-menu": "^2.0.6",

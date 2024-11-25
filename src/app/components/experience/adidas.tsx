@@ -6,7 +6,7 @@ export function Adidas() {
             <h4 className="mt-6 scroll-m-20 text-xl font-semibold tracking-tight">
                 Backend Developer Intern @{' '}
                 <a className="underline" href="https://www.runtastic.com/">
-                    adidas Running
+                    Runtastic GmbH
                 </a>
             </h4>
             <p className="mt-2 uppercase text-sm text-muted-foreground">

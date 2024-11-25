@@ -49,18 +49,38 @@ export function Projects() {
 
     const moreProjects = [
         {
+            title: 'YouRadio',
+            description:
+                'Enjoy listening to music together. Create your own radio station and enqueue songs of your choice for others to listen in realtime.',
+            image: '/youradio.jpeg',
+            gh: 'https://github.com/izzyyhh/youradio',
+            tech: 'JS, RoR, React',
+            yt: '',
+            url: '',
+        },
+        {
+            title: 'Dast - Decide fast',
+            description:
+                'Quick, fair, and easy group decision-making. For example on deciding what film to watch or to what restaurant you want to go with your friends or partner.',
+            image: '/dast_e.jpg',
+            gh: 'https://github.com/izzyyhh/decision',
+            url: 'https://decision.projects.multimediatechnology.at/',
+            tech: 'TS, NestJS, Firebase, React',
+        },
+        {
+            title: 'Pixed',
+            description:
+                'Memory sharing with friends in the easiest way possible with collaborative albums in a neo-brutalistic design.',
+            image: '/pixed_screen_e.jpg',
+            url: 'https://pixed.cloud',
+            tech: 'TS, AWS, React',
+        },
+        {
             title: 'Bookommender',
             description:
                 'A recommender system that recommends books for users through collaborative filtering and factorization machine.',
             gh: 'https://github.com/izzyyhh/bookrecommender',
             tech: 'Python, FM, React',
-        },
-        {
-            title: 'Pokédex',
-            description:
-                'An Android Pokédex app that displays information about Pokémon. Add your favorite Pokémon to your list!',
-            gh: 'https://github.com/izzyyhh/android_pokedex',
-            tech: 'Kotlin, Jetpack Compose',
         },
         {
             title: 'League Items Search',
@@ -70,11 +90,37 @@ export function Projects() {
             tech: 'TypeScript, Apache Solr, React',
         },
         {
+            title: 'Pokédex',
+            description:
+                'An Android Pokédex app that displays information about Pokémon. Add your favorite Pokémon to your list!',
+            gh: 'https://github.com/izzyyhh/android_pokedex',
+            tech: 'Kotlin, Jetpack Compose',
+        },
+        {
             title: 'Anime Quotes',
             description:
                 'A progressive web app with an Anime Quotes feed, where you can like quotes and save them.',
             gh: 'https://github.com/izzyyhh/anime-quotes-pwa',
             tech: 'JavaScript, Service Workers',
+        },
+        {
+            title: 'Stars',
+            description:
+                'Simple simulation of stars in Go. Inspired by the Coding Challenge from The Coding Train on YouTube.',
+            gh: 'https://github.com/izzyyhh/stars',
+            tech: 'Go',
+        },
+        {
+            title: 'Zok',
+            description: 'CLI for making HTTP requests like curl',
+            gh: 'https://github.com/izzyyhh/zok',
+            tech: 'Go',
+        },
+        {
+            title: 'Conways Game of Life',
+            description: 'Conways Game of Life in the Browser with WASM',
+            gh: 'https://github.com/izzyyhh/conways_game_of_life_wasm',
+            tech: 'Rust',
         },
     ]
 
@@ -183,10 +229,7 @@ export function Projects() {
                         />
                     </Carousel>
                 </div>
-                <div className="self-start w-full">
-                    <h3 className="scroll-m-20 text-2xl mt-6 pb-4 font-semibold tracking-tight">
-                        More projects
-                    </h3>
+                <div className="self-start w-full mt-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                         {moreProjects.map((p, i) => {
                             return (

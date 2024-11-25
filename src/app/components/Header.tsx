@@ -77,10 +77,10 @@ export default function Header() {
             </div>
             <div>
                 <motion.div
-                    style={{ x: '-150%' }}
+                    style={{ opacity: 0 }}
                     animate={{
-                        x: 0,
-                        transition: { duration: 0.4, delay: 0.8 },
+                        opacity: 1,
+                        transition: { duration: 0.4, delay: 1 },
                     }}
                     className="flex flex-col gap-3"
                 >

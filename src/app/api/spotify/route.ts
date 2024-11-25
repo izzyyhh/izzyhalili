@@ -2,6 +2,7 @@ import axios from 'axios'
 import { NextResponse } from 'next/server'
 import NodeCache from 'node-cache'
 
+export const dynamic = 'force-dynamic'
 const tokenCache = new NodeCache({ stdTTL: 1800 })
 
 export async function GET(request: Request) {

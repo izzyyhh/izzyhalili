@@ -68,6 +68,7 @@ export function VisitCard() {
                             width={22}
                             height={22}
                             alt="X logo"
+                            className="dark:invert"
                         ></Image>
                     </a>
                 </div>

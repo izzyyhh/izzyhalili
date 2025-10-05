@@ -37,7 +37,9 @@ export default function EnterPage({
 
     return (
         <main className="mx-auto max-w-sm p-6">
-            <h1 className="text-xl font-semibold mb-4">Enter</h1>
+            <h1 className="scroll-m-20 text-center text-2xl font-extrabold tracking-tight text-balance">
+                800er ✊🥊
+            </h1>
             {error && (
                 <p className="mb-3 text-sm text-red-600">
                     Wrong password. Try again.

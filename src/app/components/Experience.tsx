@@ -5,9 +5,10 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { SetStateAction, useEffect, useState } from 'react'
 import { ArmedForces } from './experience/armedforces'
 import { Adidas } from './experience/adidas'
+import { LandSalzburg } from './experience/landsalzburg'
 
 export function Experience() {
-    const [selectedTab, setSelectedTab] = useState('adidas')
+    const [selectedTab, setSelectedTab] = useState('ldsbg')
 
     const handleTabChange = (value: SetStateAction<string>) => {
         setSelectedTab(value)
@@ -43,14 +44,15 @@ export function Experience() {
                 .
             </p>
             <Tabs
-                defaultValue="adidas"
+                defaultValue="ldsbg"
                 onValueChange={(value) => handleTabChange(value)}
                 className="w-full"
             >
                 <TabsList>
-                    <TabsTrigger value="adidas">00. adidas</TabsTrigger>
+                    <TabsTrigger value="ldsbg">00. Land Salzburg</TabsTrigger>
+                    <TabsTrigger value="adidas">01. adidas</TabsTrigger>
                     <TabsTrigger value="aaf">
-                        01. Austrian Armed Forces
+                        02. Austrian Armed Forces
                     </TabsTrigger>
                 </TabsList>
                 <AnimatePresence mode="wait">
@@ -83,6 +85,21 @@ export function Experience() {
                             }}
                         >
                             <Adidas />
+                        </motion.div>
+                    )}
+                    {selectedTab === 'ldsbg' && (
+                        <motion.div
+                            key="ldsbg"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: 20 }}
+                            transition={{
+                                duration: 0.2,
+                                type: 'tween',
+                                ease: 'easeOut',
+                            }}
+                        >
+                            <LandSalzburg />
                         </motion.div>
                     )}
                 </AnimatePresence>

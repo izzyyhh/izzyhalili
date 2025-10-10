@@ -10,8 +10,20 @@ import {
     ItemMedia,
     ItemTitle,
 } from '@/components/ui/item'
+import { useOurListStore } from '@/lib/stores/OurListStore'
+import OurList from '../components/OurList'
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+} from '@/components/ui/popover'
+import ListItemForm from '@/components/ui/ListItemForm'
+import { useState } from 'react'
 
 export default function SecretPage() {
+    const { list, loadList, addItem, removeItem } = useOurListStore()
+    const [isOpen, setIsOpen] = useState(false)
+
     return (
         <main
             className="min-h-screen w-screen flex flex-col absolute top-0 left-0 px-24 overflow-y-auto gap-4"
@@ -22,7 +34,6 @@ export default function SecretPage() {
                 zIndex: 50,
             }}
         >
-            {/* Hintergrund GIF */}
             <div
                 className="absolute inset-0"
                 style={{
@@ -34,7 +45,6 @@ export default function SecretPage() {
                 }}
             ></div>
 
-            {/* Overlay für Blur + Mask */}
             <div
                 className="absolute inset-0"
                 style={{
@@ -45,42 +55,19 @@ export default function SecretPage() {
                 }}
             ></div>
 
-            <div className="relative z-10">
-                <h1 className="text-2xl font-bold mb-10 text-center">
-                    🔒 Auf die Liste 🔒
-                </h1>
+            <div className="relative z-10 flex justify-center flex-col">
+                <Popover open={isOpen} onOpenChange={setIsOpen}>
+                    <PopoverTrigger className="mx-auto">
+                        <h1 className="text-2xl font-bold mb-10 text-center">
+                            🔒 Auf die Liste 🔒
+                        </h1>
+                    </PopoverTrigger>
+                    <PopoverContent>
+                        <ListItemForm setIsOpen={setIsOpen}></ListItemForm>
+                    </PopoverContent>
+                </Popover>
                 <div className="w-[80%] mx-auto">
-                    <ItemGroup className="gap-2">
-                        <Item variant={'outline'}>
-                            <ItemMedia variant={'icon'}>🤫</ItemMedia>
-                            <ItemContent>
-                                <ItemTitle>Moggen</ItemTitle>
-                                <ItemDescription>
-                                    Gegenseitig moggen. Bye Bye!
-                                </ItemDescription>
-                            </ItemContent>
-                            <ItemActions>
-                                <Button size="sm" variant="outline">
-                                    ...
-                                </Button>
-                            </ItemActions>
-                        </Item>
-
-                        <Item variant={'outline'}>
-                            <ItemMedia variant={'icon'}>🌶️</ItemMedia>
-                            <ItemContent>
-                                <ItemTitle>Bequem auf der Rückbank</ItemTitle>
-                                <ItemDescription>
-                                    Da wirds heiß...
-                                </ItemDescription>
-                            </ItemContent>
-                            <ItemActions>
-                                <Button size="sm" variant="outline">
-                                    ...
-                                </Button>
-                            </ItemActions>
-                        </Item>
-                    </ItemGroup>
+                    <OurList></OurList>
                 </div>
             </div>
         </main>

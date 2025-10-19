@@ -43,18 +43,84 @@ export function Experience() {
                 </a>
                 .
             </p>
+
             <Tabs
                 defaultValue="ldsbg"
                 onValueChange={(value) => handleTabChange(value)}
                 className="w-full"
             >
-                <TabsList>
-                    <TabsTrigger value="ldsbg">00. Land Salzburg</TabsTrigger>
-                    <TabsTrigger value="adidas">01. adidas</TabsTrigger>
-                    <TabsTrigger value="aaf">
-                        02. Austrian Armed Forces
-                    </TabsTrigger>
-                </TabsList>
+                {/* ---------- CLEAN MULTI-ROW TABS ---------- */}
+                <div className="min-w-0 w-full">
+                    <TabsList
+                        /* override shadcn's 'inline-flex h-10 rounded bg-muted p-1 ...' */
+                        className="
+              flex flex-wrap
+              w-full
+              gap-x-2 gap-y-2
+              p-0
+              bg-transparent
+              rounded-none
+              h-auto
+            "
+                    >
+                        {/* Each trigger as its own 'chip' so wrapping looks intentional */}
+                        <TabsTrigger
+                            value="ldsbg"
+                            className="
+                h-9 px-3
+                rounded-full
+                border
+                bg-background
+                shadow-sm
+                text-sm leading-none
+                whitespace-nowrap
+                data-[state=active]:bg-primary
+                data-[state=active]:text-primary-foreground
+                data-[state=active]:border-primary
+              "
+                        >
+                            00. Land Salzburg
+                        </TabsTrigger>
+
+                        <TabsTrigger
+                            value="adidas"
+                            className="
+                h-9 px-3
+                rounded-full
+                border
+                bg-background
+                shadow-sm
+                text-sm leading-none
+                whitespace-nowrap
+                data-[state=active]:bg-primary
+                data-[state=active]:text-primary-foreground
+                data-[state=active]:border-primary
+              "
+                        >
+                            01. adidas
+                        </TabsTrigger>
+
+                        <TabsTrigger
+                            value="aaf"
+                            className="
+                h-9 px-3
+                rounded-full
+                border
+                bg-background
+                shadow-sm
+                text-sm leading-none
+                whitespace-nowrap
+                data-[state=active]:bg-primary
+                data-[state=active]:text-primary-foreground
+                data-[state=active]:border-primary
+              "
+                        >
+                            02. Austrian Armed Forces
+                        </TabsTrigger>
+                    </TabsList>
+                </div>
+
+                {/* ---------- CONTENT (unchanged) ---------- */}
                 <AnimatePresence mode="wait">
                     {selectedTab === 'aaf' && (
                         <motion.div
@@ -87,6 +153,7 @@ export function Experience() {
                             <Adidas />
                         </motion.div>
                     )}
+
                     {selectedTab === 'ldsbg' && (
                         <motion.div
                             key="ldsbg"

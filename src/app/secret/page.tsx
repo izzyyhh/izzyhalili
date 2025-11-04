@@ -19,10 +19,13 @@ import {
 } from '@/components/ui/popover'
 import ListItemForm from '@/components/ui/ListItemForm'
 import { useState } from 'react'
+import { ListItem } from '../api/ourlist/route'
 
 export default function SecretPage() {
-    const { list, loadList, addItem, removeItem } = useOurListStore()
+    const { list, loadList, addItem, removeItem, updateItem } =
+        useOurListStore()
     const [isOpen, setIsOpen] = useState(false)
+    const [selectedItem, setSelectedItem] = useState<ListItem | null>(null)
 
     return (
         <main
@@ -62,12 +65,28 @@ export default function SecretPage() {
                             🔒 Auf die Liste 🔒
                         </h1>
                     </PopoverTrigger>
-                    <PopoverContent>
-                        <ListItemForm setIsOpen={setIsOpen}></ListItemForm>
+                    <PopoverContent
+                        onInteractOutside={() => {
+                            setSelectedItem(null)
+                        }}
+                    >
+                        <ListItemForm
+                            setIsOpen={setIsOpen}
+                            item={selectedItem}
+                            setItem={setSelectedItem}
+                        ></ListItemForm>
                     </PopoverContent>
                 </Popover>
-                <div className="w-[80%] mx-auto">
-                    <OurList></OurList>
+                <div className="flex flex-col items-center w-full">
+                    <OurList
+                        onEdit={(id) => {
+                            const item = list.find((item) => item.id === id)
+                            if (item) {
+                                setSelectedItem(item)
+                                setIsOpen(true)
+                            }
+                        }}
+                    ></OurList>
                 </div>
             </div>
         </main>

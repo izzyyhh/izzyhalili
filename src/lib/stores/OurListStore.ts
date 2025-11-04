@@ -5,13 +5,14 @@ type ListItem = {
     id: number
     title: string
     description?: string
-    icon?: string
+    icon: string
 }
 
 type OurListStore = {
     list: ListItem[]
     loadList: () => Promise<void>
     addItem: (item: Omit<ListItem, 'id'>) => Promise<void>
+    updateItem: (item: ListItem) => Promise<void>
     removeItem: (id: number) => Promise<void>
 }
 
@@ -26,6 +27,10 @@ export const useOurListStore = create<OurListStore>((set) => {
         },
         addItem: async (item) => {
             const updatedList = await repository.add(item)
+            set({ list: updatedList })
+        },
+        updateItem: async (item) => {
+            const updatedList = await repository.update(item)
             set({ list: updatedList })
         },
         removeItem: async (id) => {

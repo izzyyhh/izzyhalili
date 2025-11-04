@@ -40,6 +40,18 @@ export class OurListFEApiRepository<T extends { id: number }>
         return response.json()
     }
 
+    async update(item: T): Promise<T[]> {
+        const response = await fetch(`${this.baseUrl}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(item),
+        })
+        if (!response.ok) {
+            throw new Error('Failed to add the item')
+        }
+        return response.json()
+    }
+
     async remove(predicate: (item: T) => boolean): Promise<T[]> {
         // Extract the ID from the predicate
         const list = await this.load()

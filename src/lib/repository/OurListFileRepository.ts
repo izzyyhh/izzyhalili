@@ -29,6 +29,14 @@ export class OurListFileRepository<T> implements IOurListRepository<T> {
     }
 
     async save(list: T[]): Promise<T[]> {
+        list.sort((a, b) => {
+            const idA = (a as any).id
+            const idB = (b as any).id
+            if (typeof idA === 'number' && typeof idB === 'number') {
+                return idA - idB
+            }
+            return 0
+        })
         await fs.mkdir(path.dirname(this.filePath), { recursive: true }) // Erstelle das Verzeichnis, falls es nicht existiert
         await fs.writeFile(
             this.filePath,
@@ -40,7 +48,15 @@ export class OurListFileRepository<T> implements IOurListRepository<T> {
 
     async add(item: T): Promise<T[]> {
         const list = await this.load()
-        list.push(item)
+        const currentDate = (item as any).dateAdded
+        const needDate =
+            currentDate === undefined ||
+            currentDate === null ||
+            currentDate === ''
+        const itemWithDate = needDate
+            ? { ...item, dateAdded: new Date().toLocaleString() }
+            : item
+        list.push(itemWithDate as T)
         return this.save(list)
     }
 

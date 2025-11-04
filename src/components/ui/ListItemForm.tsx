@@ -1,21 +1,34 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useOurListStore } from '@/lib/stores/OurListStore'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { ListItem } from '@/app/api/ourlist/route'
 
 type ListItemFormProps = {
     setIsOpen: (x: any) => void
+    item?: ListItem | null
+    setItem?: (item: ListItem | null) => void
 }
 
 const ListItemForm: React.FC<ListItemFormProps> = ({
     setIsOpen,
+    item,
+    setItem,
 }: ListItemFormProps) => {
-    const { addItem } = useOurListStore()
+    const { addItem, updateItem } = useOurListStore()
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [icon, setIcon] = useState('')
+
+    useEffect(() => {
+        if (item) {
+            setTitle(item.title)
+            setDescription(item.description || '')
+            setIcon(item.icon || '')
+        }
+    }, [item])
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
@@ -25,16 +38,25 @@ const ListItemForm: React.FC<ListItemFormProps> = ({
             return
         }
 
-        await addItem({
-            title,
-            description: description || undefined,
-            icon: icon || '📌', // Default icon if none is provided
-        })
+        if (item) {
+            await updateItem({
+                ...item,
+                title,
+                description: description || undefined,
+                icon: icon || '📌',
+            })
+        } else {
+            await addItem({
+                title,
+                description: description || undefined,
+                icon: icon || '📌',
+            })
+        }
 
-        // Reset form fields after submission
         setTitle('')
         setDescription('')
         setIcon('')
+        if (setItem) setItem(null)
         setIsOpen(false)
     }
 
@@ -69,7 +91,7 @@ const ListItemForm: React.FC<ListItemFormProps> = ({
                 />
             </div>
             <Button type="submit" className="mt-4">
-                Add Item
+                {item ? 'Save' : 'Add Item'}
             </Button>
         </form>
     )

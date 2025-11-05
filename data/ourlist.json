@@ -4,6 +4,7 @@
     "title": "Nikotin Kiss ",
     "description": "Nikotin Kiss",
     "icon": "💋",
+    "checked": true,
     "dateAdded": "11/4/2025, 3:40:46 AM"
   },
   {
@@ -28,7 +29,9 @@
   {
     "id": 5,
     "title": "test",
+    "description": "",
     "icon": "✋🏻",
+    "checked": true,
     "dateAdded": "4.11.2025, 19:49:46"
   },
   {

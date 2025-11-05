@@ -6,6 +6,7 @@ type ListItem = {
     title: string
     description?: string
     icon: string
+    checked?: boolean
 }
 
 type OurListStore = {

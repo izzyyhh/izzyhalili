@@ -7,6 +7,7 @@ export type ListItem = {
     description?: string
     icon: string
     dateAdded?: string
+    checked?: boolean
 }
 
 const repo = new OurListFileRepository<ListItem>('ourlist.json')
@@ -73,6 +74,7 @@ export async function PUT(req: Request) {
             title: body.title,
             description: body.description,
             icon: body.icon || '🤫',
+            checked: body.checked || false,
         }
 
         const exists = list.some((it) => it.id === item.id)

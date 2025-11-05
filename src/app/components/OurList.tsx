@@ -23,6 +23,7 @@ export default function OurList({}: OurListProps) {
                         description={item.description || ''}
                         icon={item.icon}
                         key={item.id}
+                        checked={item.checked}
                     ></ListItem>
                 ))}
             </ItemGroup>

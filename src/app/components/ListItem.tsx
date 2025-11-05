@@ -56,7 +56,11 @@ export default function ListItem({
                             </button>
                         </PopoverTrigger>
                         <Portal>
-                            <PopoverContent className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 max-w-[90%] max-h-[90%] overflow-auto bg-white shadow-lg rounded-lg p-4">
+                            <PopoverContent
+                                side="left"
+                                align="start"
+                                onOpenAutoFocus={(e) => e.preventDefault()}
+                            >
                                 <ListItemForm
                                     setIsOpen={setIsOpen}
                                     item={{

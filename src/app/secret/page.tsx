@@ -1,16 +1,5 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
-import {
-    Item,
-    ItemActions,
-    ItemContent,
-    ItemDescription,
-    ItemGroup,
-    ItemMedia,
-    ItemTitle,
-} from '@/components/ui/item'
-import { useOurListStore } from '@/lib/stores/OurListStore'
 import OurList from '../components/OurList'
 import {
     Popover,
@@ -19,13 +8,9 @@ import {
 } from '@/components/ui/popover'
 import ListItemForm from '@/components/ui/ListItemForm'
 import { useState } from 'react'
-import { ListItem } from '../api/ourlist/route'
 
 export default function SecretPage() {
-    const { list, loadList, addItem, removeItem, updateItem } =
-        useOurListStore()
     const [isOpen, setIsOpen] = useState(false)
-    const [selectedItem, setSelectedItem] = useState<ListItem | null>(null)
 
     return (
         <main
@@ -65,28 +50,12 @@ export default function SecretPage() {
                             🔒 Auf die Liste 🔒
                         </h1>
                     </PopoverTrigger>
-                    <PopoverContent
-                        onInteractOutside={() => {
-                            setSelectedItem(null)
-                        }}
-                    >
-                        <ListItemForm
-                            setIsOpen={setIsOpen}
-                            item={selectedItem}
-                            setItem={setSelectedItem}
-                        ></ListItemForm>
+                    <PopoverContent>
+                        <ListItemForm setIsOpen={setIsOpen}></ListItemForm>
                     </PopoverContent>
                 </Popover>
                 <div className="flex flex-col items-center w-full">
-                    <OurList
-                        onEdit={(id) => {
-                            const item = list.find((item) => item.id === id)
-                            if (item) {
-                                setSelectedItem(item)
-                                setIsOpen(true)
-                            }
-                        }}
-                    ></OurList>
+                    <OurList></OurList>
                 </div>
             </div>
         </main>

@@ -1,24 +1,13 @@
 'use client'
-import { Button } from '@/components/ui/button'
-import {
-    Item,
-    ItemActions,
-    ItemContent,
-    ItemDescription,
-    ItemGroup,
-    ItemMedia,
-    ItemTitle,
-} from '@/components/ui/item'
+import { ItemGroup } from '@/components/ui/item'
 import { useOurListStore } from '@/lib/stores/OurListStore'
 import React, { useEffect } from 'react'
 import ListItem from './ListItem'
 
-type OurListProps = {
-    onEdit?: (id: number) => void
-}
+type OurListProps = {}
 
-export default function OurList({ onEdit }: OurListProps) {
-    const { list, loadList, addItem, removeItem } = useOurListStore()
+export default function OurList({}: OurListProps) {
+    const { list, loadList } = useOurListStore()
 
     useEffect(() => {
         loadList()
@@ -34,7 +23,6 @@ export default function OurList({ onEdit }: OurListProps) {
                         description={item.description || ''}
                         icon={item.icon}
                         key={item.id}
-                        onEdit={onEdit}
                     ></ListItem>
                 ))}
             </ItemGroup>

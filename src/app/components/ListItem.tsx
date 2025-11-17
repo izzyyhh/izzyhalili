@@ -61,14 +61,6 @@ export default function ListItem({
             )}
             onClick={handleDoubleTap}
         >
-            {checked && (
-                <Badge
-                    variant="secondary"
-                    className="h-5 min-w-5 rounded-full px-1 font-mono tabular-nums absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2"
-                >
-                    <TurtleIcon size={16} />
-                </Badge>
-            )}
             <Item variant={'outline'} className="min-h-[80px]">
                 <input type="hidden" name="id" value={id} />
                 {icon ? (
@@ -84,7 +76,12 @@ export default function ListItem({
                         <ItemDescription>{description}</ItemDescription>
                     )}
                 </ItemContent>
-                <ItemActions>
+                <ItemActions className="gap-5">
+                    {checked && (
+                        <Badge variant="secondary" className="rounded-md py-1">
+                            <CheckIcon size={16} />
+                        </Badge>
+                    )}
                     <Popover open={isOpen} onOpenChange={setIsOpen}>
                         <PopoverTrigger asChild>
                             <button className="py-1 pl-1">

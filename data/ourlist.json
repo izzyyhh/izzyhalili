@@ -10,7 +10,9 @@
   {
     "id": 2,
     "title": "Test",
+    "description": "",
     "icon": "✋🏻",
+    "checked": false,
     "dateAdded": "11/4/2025, 3:40:50 AM"
   },
   {

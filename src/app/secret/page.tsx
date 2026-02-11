@@ -8,9 +8,12 @@ import {
 } from '@/components/ui/popover'
 import ListItemForm from '@/components/ui/ListItemForm'
 import { useState } from 'react'
+import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 export default function SecretPage() {
     const [isOpen, setIsOpen] = useState(false)
+    const router = useRouter()
 
     return (
         <main
@@ -22,6 +25,12 @@ export default function SecretPage() {
                 zIndex: 50,
             }}
         >
+            <div
+                onClick={() => router.push('/marlenes-vday')}
+                className="absolute top-5 right-2 z-50 animate-pulse animate-bounce"
+            >
+                <img src="/rose.gif" alt="rose" width={90} height={90} />
+            </div>
             <div
                 className="absolute inset-0"
                 style={{

@@ -18,17 +18,11 @@ const ListItemForm: React.FC<ListItemFormProps> = ({
     setItem,
 }: ListItemFormProps) => {
     const { addItem, updateItem } = useOurListStore()
-    const [title, setTitle] = useState('')
-    const [description, setDescription] = useState('')
-    const [icon, setIcon] = useState('')
-
-    useEffect(() => {
-        if (item) {
-            setTitle(item.title)
-            setDescription(item.description || '')
-            setIcon(item.icon || '')
-        }
-    }, [item])
+    const [title, setTitle] = useState(() => item?.title ?? '')
+    const [description, setDescription] = useState(
+        () => item?.description ?? ''
+    )
+    const [icon, setIcon] = useState(() => item?.icon ?? '')
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()

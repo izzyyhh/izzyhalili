@@ -5,7 +5,7 @@ import type { NextRequest } from 'next/server'
 const PROTECTED_PREFIX = '/secret'
 const AUTH_COOKIE = 'secret_auth'
 
-export function middleware(req: NextRequest) {
+export function proxy(req: NextRequest) {
     const { pathname } = req.nextUrl
 
     // only guard the protected area

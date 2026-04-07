@@ -1,8 +1,8 @@
 'use client'
 
 import { Birthstone, Fleur_De_Leah } from 'next/font/google'
-import React, { useState } from 'react'
-import Confetti from 'react-confetti'
+import React, { useEffect, useState } from 'react'
+import confetti from 'canvas-confetti'
 
 interface PuzzlePiece {
     id: number
@@ -114,6 +114,12 @@ export default function ValentinesDayPage() {
         setActiveId(null)
     }
 
+    useEffect(() => {
+        if (saidYes) {
+            confetti({ particleCount: 600, spread: 120, origin: { y: 0.6 } })
+        }
+    }, [saidYes])
+
     const resetPuzzle = () => {
         setPuzzlePieces(initialPieces)
         setPuzzleComplete(false)
@@ -122,7 +128,6 @@ export default function ValentinesDayPage() {
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-pink-200 via-red-50 to-pink-400 flex flex-col items-center justify-center p-4 overflow-hidden">
-            {saidYes && <Confetti numberOfPieces={600} />}
 
             <h1
                 className={`text-4xl font-bold text-red-600 mb-6 text-center ${fleurDeLeah.className}`}

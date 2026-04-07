@@ -17,7 +17,8 @@ async function unlock(formData: FormData) {
     }
 
     // set HttpOnly cookie so client JS can't read it
-    cookies().set('secret_auth', '1', {
+    const cookieStore = await cookies()
+    cookieStore.set('secret_auth', '1', {
         httpOnly: true,
         sameSite: 'lax',
         secure: true,
@@ -28,12 +29,13 @@ async function unlock(formData: FormData) {
     redirect(next)
 }
 
-export default function EnterPage({
+export default async function EnterPage({
     searchParams,
 }: {
-    searchParams: { next?: string; error?: string }
+    searchParams: Promise<{ next?: string; error?: string }>
 }) {
-    const error = searchParams?.error === '1'
+    const { error: errorParam } = await searchParams
+    const error = errorParam === '1'
 
     return (
         <main className="mx-auto max-w-sm p-6">

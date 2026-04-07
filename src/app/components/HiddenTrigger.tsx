@@ -1,16 +1,10 @@
 'use client'
 
-import React, {
-    cloneElement,
-    isValidElement,
-    ReactElement,
-    useEffect,
-    useState,
-} from 'react'
+import React, { ReactNode, useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 
 type HiddenTriggerProps = {
-    children: ReactElement<any> // accept any element
+    children: ReactNode
     redirectTo?: string
     tapCount?: number
     resetMs?: number | null
@@ -33,18 +27,9 @@ export default function HiddenTrigger({
         }
     }, [taps, tapCount, redirectTo, router, resetMs])
 
-    if (!isValidElement(children)) {
-        return children as unknown as ReactElement
-    }
-
-    const childOnClick = (children.props as any).onClick as
-        | React.MouseEventHandler
-        | undefined
-
-    const handleClick: React.MouseEventHandler = (e) => {
-        setTaps((n) => n + 1)
-        childOnClick?.(e)
-    }
-
-    return cloneElement(children, { onClick: handleClick } as any)
+    return (
+        <span onClick={() => setTaps((n) => n + 1)} style={{ cursor: 'inherit' }}>
+            {children}
+        </span>
+    )
 }

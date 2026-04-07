@@ -53,7 +53,6 @@ export function SpotifyCard() {
                 <CardTitle className="flex gap-2 items-center">
                     <Image
                         src={'/spotify.svg'}
-                        typeof="svg"
                         alt="Spotify icon"
                         className="dark:invert-[1]"
                         width={22}

@@ -43,7 +43,7 @@ export function Projects() {
                 'Memory sharing with friends in the easiest way possible',
             image: '/pixed_screen_e.jpg',
             url: 'https://pixed.cloud',
-            tech: 'TS, AWS, React',
+            tech: 'TS, AWS, React, React Native',
         },
     ]
 
